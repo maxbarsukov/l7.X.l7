@@ -1,0 +1,28 @@
+{
+    "name": "maxbarsukov/l7xl7",
+    "description": "Programming language for Russian programmers, which has no analogues in the world",
+    "type": "library",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "maxbarsukov",
+            "email": "maximbarsukov@bk.ru"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/maxbarsukov/l7.X.l7/issues",
+        "source": "https://github.com/maxbarsukov/l7.X.l7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maxbarsukov\\L7xl7\\": "src/"
+        }
+    },
+    "bin": ["bin/l7xl7"],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    }
+}
