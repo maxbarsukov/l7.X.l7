@@ -1,0 +1,15 @@
+# Ignore IDE files
+*.swp
+/.idea/*
+/.vs/*
+/.vscode/*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Misc
+.DS_Store
+/vendor/
