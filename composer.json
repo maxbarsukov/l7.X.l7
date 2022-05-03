@@ -2,7 +2,7 @@
     "name": "maxbarsukov/l7xl7",
     "description": "Programming language for Russian programmers, which has no analogues in the world",
     "type": "library",
-    "license": "GPL",
+    "license": "GPL-3.0-only",
     "authors": [
         {
             "name": "maxbarsukov",
@@ -18,11 +18,30 @@
             "Maxbarsukov\\L7xl7\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "bin": ["bin/l7xl7"],
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "ext-readline": "*"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*"
+        "squizlabs/php_codesniffer": "3.*",
+        "phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.8"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests",
+        "cs": "vendor/bin/php-cs-fixer fix --allow-risky yes",
+        "lint": "vendor/bin/phpcs src",
+        "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=2G"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }
