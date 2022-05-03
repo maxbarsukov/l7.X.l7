@@ -13,6 +13,7 @@
 # Misc
 .DS_Store
 /vendor/
+/build/
 
 # PHP
 .phan
@@ -21,3 +22,5 @@ composer.lock
 .phpstorm.meta.php
 .php_cs.cache
 .php-cs-fixer.cache
+phpcs.xml
+phpunit.xml
