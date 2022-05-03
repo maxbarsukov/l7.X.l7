@@ -25,7 +25,7 @@ jobs:
           composer install --optimize-autoloader
 
       - name: Run linter
-        run:
+        run: |
           composer lint
           composer cs
 
