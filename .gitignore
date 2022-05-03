@@ -13,3 +13,11 @@
 # Misc
 .DS_Store
 /vendor/
+
+# PHP
+.phan
+composer.lock
+.phpunit.result.cache
+.phpstorm.meta.php
+.php_cs.cache
+.php-cs-fixer.cache
