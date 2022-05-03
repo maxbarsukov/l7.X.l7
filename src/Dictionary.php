@@ -1,19 +1,19 @@
-<?php namespace Maxbarsukov\L7xl7;
+<?php
+
+namespace Maxbarsukov\L7xl7;
 
 class Dictionary
 {
-    public static final function keywords()
+    final public static function keywords()
     {
         return [
-            "функция" => "function",
-            "класс" => "class",
+            'функция' => 'function',
+            'класс' => 'class',
         ];
     }
 
-    public static final function signs()
+    final public static function signs()
     {
-        return [
-            "₽" => "$",
-        ];
+        return ['₽' => '$'];
     }
 }

@@ -1,6 +1,6 @@
-<?php namespace Maxbarsukov\L7xl7;
+<?php
 
-use \Maxbarsukov\L7xl7\Dictionary;
+namespace Maxbarsukov\L7xl7;
 
 class Cli
 {
@@ -13,7 +13,7 @@ class Cli
 
     public function run()
     {
-        echo Dictionary::keywords()["функция"]."\n";
-        echo Dictionary::signs()["₽"]."\n";
+        echo Dictionary::keywords()['функция']."\n";
+        echo Dictionary::signs()['₽']."\n";
     }
 }
