@@ -29,15 +29,16 @@
         "ext-readline": "*"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpstan/phpstan": "^1.6",
         "phpunit/phpunit": "^9.5",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "squizlabs/php_codesniffer": "3.*"
     },
     "scripts": {
         "test": "vendor/bin/phpunit tests",
         "cs": "vendor/bin/php-cs-fixer fix --allow-risky yes",
         "lint": "vendor/bin/phpcs src",
-        "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=2G"
+        "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=2G"
     },
     "config": {
         "optimize-autoloader": true,
