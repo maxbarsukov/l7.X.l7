@@ -3,12 +3,14 @@ name: PHP tests
 on: [push]
 
 jobs:
-  Tests:
+  TestsAndLinting:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         php-versions: ['7.4', '8.0', '8.1', 'latest']
       fail-fast: false
+
     steps:
       - uses: actions/checkout@v1
       - name: Setup PHP
@@ -23,4 +25,15 @@ jobs:
           composer install --optimize-autoloader
 
       - name: Run linter
-        run: composer exec phpcs src
+        run:
+          composer lint
+          composer cs
+
+      - name: Run PHPStan
+        continue-on-error: true
+        run:
+          composer phpstan
+
+      - name: Run Tests
+        run:
+          composer test
