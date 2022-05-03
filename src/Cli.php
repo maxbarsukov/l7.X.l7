@@ -23,6 +23,7 @@ class Cli
                 (new FileDispatcher())
                     ->dispatch($baseFilename)
             );
+
             return;
         }
         if (is_file($filename) || is_dir($filename)) {
@@ -30,6 +31,7 @@ class Cli
                 (new FileDispatcher())
                     ->dispatch($filename)
             );
+
             return;
         }
         Error::raise('No such file or directory: '.$filename);
