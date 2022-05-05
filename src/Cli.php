@@ -3,6 +3,9 @@
 namespace Maxbarsukov\L7xl7;
 
 use Maxbarsukov\L7xl7\FileDispatcher\FileDispatcher;
+use Maxbarsukov\L7xl7\FileLoader\FileLoader;
+use Maxbarsukov\L7xl7\Utils\Error;
+use Maxbarsukov\L7xl7\Utils\PathTransformer;
 
 class Cli
 {
@@ -13,27 +16,22 @@ class Cli
         $this->_config = $argv;
     }
 
-    public function run()
+    public function run(): void
     {
         $baseFilename = $this->_config[0];
         $filename = $_SERVER['PWD'].'/'.$baseFilename;
 
-        if (is_file($baseFilename) || is_dir($baseFilename)) {
-            var_dump(
-                (new FileDispatcher())
-                    ->dispatch($baseFilename)
-            );
+        foreach ([$baseFilename, $filename] as $f) {
+            if (is_file($f) || is_dir($f)) {
+                $filenames = (new FileLoader(['.ruphp']))->load($f);
+                $pathTransformer = new PathTransformer('/out');
+                $dispatcher = new FileDispatcher($filenames, $pathTransformer);
+                $dispatcher->transpileAndSave();
 
-            return;
+                return;
+            }
         }
-        if (is_file($filename) || is_dir($filename)) {
-            var_dump(
-                (new FileDispatcher())
-                    ->dispatch($filename)
-            );
 
-            return;
-        }
         Error::raise('No such file or directory: '.$filename);
     }
 }
