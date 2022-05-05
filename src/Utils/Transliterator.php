@@ -4,7 +4,7 @@ namespace Maxbarsukov\L7xl7\Utils;
 
 class Transliterator
 {
-    public static function transliterate($text)
+    public static function transliterate(string $text): string
     {
         $converter = [
             'а' => 'a',  'б' => 'b',   'в' => 'v',   'г' => 'g',  'д' => 'd',
@@ -24,8 +24,6 @@ class Transliterator
             'Э' => 'E',  'Ю' => 'Yu',  'Я' => 'Ya',
         ];
 
-        $value = strtr($text, $converter);
-
-        return $value;
+        return strtr($text, $converter);
     }
 }
