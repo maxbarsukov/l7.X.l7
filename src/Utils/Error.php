@@ -6,7 +6,7 @@ class Error
 {
     public static function raise($message, $status = 1)
     {
-        echo $message."\n";
+        echo 'Ошибка: '.$message."\n";
         exit($status);
     }
 }
