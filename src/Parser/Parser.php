@@ -31,7 +31,7 @@ class Parser
         try {
             $ast = $parser->parse($code);
         } catch (ParserError $error) {
-            Error::raise("Parse error: {$error->getMessage()}\n");
+            Error::raise("Ошиба парсинга: {$error->getMessage()}\n");
         }
 
         return $ast;

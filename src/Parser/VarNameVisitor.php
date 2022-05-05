@@ -27,7 +27,6 @@ class VarNameVisitor extends NodeVisitorAbstract
             'PhpParser\Node\Expr\NullsafePropertyFetch',
             'PhpParser\Node\Expr\NullsafeMethodCall',
             'PhpParser\Node\Expr\MethodCall',
-            'PhpParser\Node\Expr\FuncCall',
             'PhpParser\Node\Expr\ConstFetch',
             'PhpParser\Node\Expr\ClassConstFetch',
             'PhpParser\Node\Stmt\Function_',
@@ -37,6 +36,7 @@ class VarNameVisitor extends NodeVisitorAbstract
             'PhpParser\Node\Stmt\PropertyProperty',
             'PhpParser\Node\Stmt\UseUse',
         ];
+        var_dump($node);
 
         foreach ($classNames as $className) {
             if (is_a($node, $className)) {
@@ -46,6 +46,30 @@ class VarNameVisitor extends NodeVisitorAbstract
 
         if (is_a($node, 'PhpParser\Node\Stmt\TraitUseAdaptation\Alias')) {
             $node->newName = Transliterator::transliterate($node->newName);
+        }
+
+        $classNames = [
+            'PhpParser\Node\Expr\FuncCall',
+            'PhpParser\Node\Expr\NullsafeMethodCall',
+            'PhpParser\Node\Expr\MethodCall',
+            'PhpParser\Node\Expr\StaticCall',
+        ];
+        foreach ($classNames as $className) {
+            if (is_a($node, $className)) {
+                if (is_a($node->name, 'PhpParser\Node\Name')) {
+                    foreach ($node->name->parts as &$part) {
+                        $part = Transliterator::transliterate($part);
+                    }
+                } elseif (is_a($node->name, 'PhpParser\Node\Identifier')) {
+                    $node->name->name = Transliterator::transliterate($node->name->name);
+                }
+            }
+        }
+
+        if (is_a($node, 'PhpParser\Node\Name')) {
+            foreach ($node->parts as &$part) {
+                $part = Transliterator::transliterate($part);
+            }
         }
     }
 }
