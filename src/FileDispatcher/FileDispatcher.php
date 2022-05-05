@@ -21,7 +21,7 @@ class FileDispatcher
         foreach ($this->_filenames as $filename) {
             $code = (new Transpiler($filename))->transpile();
             $newFilename = $this->_pathTransformer->transform($filename);
-            file_put_contents($newFilename, $code);
+            file_put_contents($newFilename, $code."\n");
         }
     }
 }
