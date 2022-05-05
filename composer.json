@@ -26,7 +26,9 @@
     "bin": ["bin/l7xl7"],
     "require": {
         "php": ">=7.4",
-        "ext-readline": "*"
+        "ext-readline": "*",
+        "ext-curl": "*",
+        "nikic/php-parser": "^4.13"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
