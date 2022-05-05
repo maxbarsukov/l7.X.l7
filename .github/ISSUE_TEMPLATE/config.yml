@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/maxbarsukov/l7.X.l7/discussions
+    about: Visit our GitHub Discussions page to suggest an idea to make l7.X.l7 better.
