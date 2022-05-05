@@ -40,7 +40,6 @@ class Transpiler
         $to = array_values($dictionary);
 
         $this->_text = str_replace($from, $to, $this->_text);
-        var_dump($this->_text);
     }
 
     private function _checkForDollarSigns(): void

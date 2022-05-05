@@ -36,7 +36,6 @@ class VarNameVisitor extends NodeVisitorAbstract
             'PhpParser\Node\Stmt\PropertyProperty',
             'PhpParser\Node\Stmt\UseUse',
         ];
-        var_dump($node);
 
         foreach ($classNames as $className) {
             if (is_a($node, $className)) {
