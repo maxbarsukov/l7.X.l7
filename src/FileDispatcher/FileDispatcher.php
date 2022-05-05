@@ -2,56 +2,26 @@
 
 namespace Maxbarsukov\L7xl7\FileDispatcher;
 
-use DirectoryIterator;
+use Maxbarsukov\L7xl7\Transpiler\Transpiler;
+use Maxbarsukov\L7xl7\Utils\PathTransformer;
 
 class FileDispatcher
 {
-    private ?string $_fileExtension;
+    private array $_filenames;
+    private PathTransformer $_pathTransformer;
 
-    public function __construct(string $fileExtension = null)
+    public function __construct(array $filenames, PathTransformer $pathTransformer)
     {
-        if (null !== $fileExtension && '.' == $fileExtension[0]) {
-            $fileExtension = substr($fileExtension, 1);
-        }
-        $this->_fileExtension = $fileExtension;
+        $this->_filenames = $filenames;
+        $this->_pathTransformer = $pathTransformer;
     }
 
-    public function dispatch($filename): array
+    public function transpileAndSave(): void
     {
-        // Without file extension check
-        if (is_file($filename)) {
-            return [realpath($filename)];
+        foreach ($this->_filenames as $filename) {
+            $code = (new Transpiler($filename))->transpile();
+            $newFilename = $this->_pathTransformer->transform($filename);
+            file_put_contents($newFilename, $code);
         }
-
-        return $this->listFolderFiles($filename);
-    }
-
-    public function listFolderFiles($dir, $file_paths = []): array
-    {
-        foreach (new DirectoryIterator($dir) as $fileInfo) {
-            if (!$fileInfo->isDot()) {
-                if ($fileInfo->isDir()) {
-                    $file_paths = $this->listFolderFiles(
-                        $fileInfo->getPathname(), $file_paths
-                    );
-                } else {
-                    $path = $fileInfo->getRealPath();
-                    if ($this->_checkExtension($path)) {
-                        $file_paths[] = $path;
-                    }
-                }
-            }
-        }
-
-        return $file_paths;
-    }
-
-    private function _checkExtension($path): bool
-    {
-        if (null === $this->_fileExtension) {
-            return true;
-        }
-
-        return pathinfo($path, \PATHINFO_EXTENSION) == $this->_fileExtension;
     }
 }
