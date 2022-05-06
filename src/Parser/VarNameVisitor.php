@@ -11,7 +11,6 @@ class VarNameVisitor extends NodeVisitorAbstract
     public function enterNode(Node $node)
     {
         $classNames = [
-            'PhpParser\Node\Arg',
             'PhpParser\Node\Attribute',
             'PhpParser\Node\Const_',
             'PhpParser\Node\Identifier',
@@ -20,7 +19,6 @@ class VarNameVisitor extends NodeVisitorAbstract
             'PhpParser\Node\Stmt\Identifier',
             'PhpParser\Node\Expr\StaticCall',
             'PhpParser\Node\Expr\UseUse',
-            'PhpParser\Node\Expr\ClassConstFetch',
             'PhpParser\Node\Expr\Variable',
             'PhpParser\Node\Expr\StaticPropertyFetch',
             'PhpParser\Node\Expr\PropertyFetch',
@@ -28,13 +26,10 @@ class VarNameVisitor extends NodeVisitorAbstract
             'PhpParser\Node\Expr\NullsafeMethodCall',
             'PhpParser\Node\Expr\MethodCall',
             'PhpParser\Node\Expr\ConstFetch',
-            'PhpParser\Node\Expr\ClassConstFetch',
             'PhpParser\Node\Stmt\Function_',
             'PhpParser\Node\Stmt\Goto_',
             'PhpParser\Node\Stmt\Label',
-            'PhpParser\Node\Stmt\Namespace_',
             'PhpParser\Node\Stmt\PropertyProperty',
-            'PhpParser\Node\Stmt\UseUse',
         ];
 
         foreach ($classNames as $className) {
@@ -48,10 +43,14 @@ class VarNameVisitor extends NodeVisitorAbstract
         }
 
         $classNames = [
+            'PhpParser\Node\Arg',
             'PhpParser\Node\Expr\FuncCall',
             'PhpParser\Node\Expr\NullsafeMethodCall',
             'PhpParser\Node\Expr\MethodCall',
             'PhpParser\Node\Expr\StaticCall',
+            'PhpParser\Node\Stmt\UseUse',
+            'PhpParser\Node\Stmt\Namespace_',
+            'PhpParser\Node\Expr\ClassConstFetch',
         ];
         foreach ($classNames as $className) {
             if (is_a($node, $className)) {
