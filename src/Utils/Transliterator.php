@@ -6,6 +6,19 @@ class Transliterator
 {
     public static function transliterate(string $text): string
     {
+        $translit = self::transliterateString($text);
+        if ($text === mb_strtoupper($text, "utf-8")) {
+            return mb_strtoupper($translit, "utf-8");
+        }
+        if ($text === mb_strtolower($text, "utf-8")) {
+            return mb_strtolower($translit, "utf-8");
+        }
+
+        return $translit;
+    }
+
+    public static function transliterateString(string $text): string
+    {
         $converter = [
             'а' => 'a',  'б' => 'b',   'в' => 'v',   'г' => 'g',  'д' => 'd',
             'е' => 'e',  'ё' => 'e',   'ж' => 'zh',  'з' => 'z',  'и' => 'i',
