@@ -198,13 +198,13 @@ echo $perem1 + $perem2;
 ```php
 <?php
 // Объявление именованной функции
-function poluch_privet_mir() : string
+function poluch_privet_mir(): string
 {
     return 'Привет, мир!';
 }
 
 // Объявление анонимной функции
-$poluch_privet_mir = function () : string
+$poluch_privet_mir = function (): string
 {
     return 'Привет, мир!';
 };
@@ -219,7 +219,7 @@ $poluch_privet_mir = fn(): string
 $peremennaya = 'Hello World!';
 
 // Использование оператора use
-function() use ($peremennaya) : string
+function() use ($peremennaya): string
 {
     return $peremennaya;
 };
