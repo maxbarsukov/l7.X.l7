@@ -28,13 +28,13 @@
 <table>
 <tr>
 <th align="center">
-<img width="441" height="1">
+<img width="300" height="1">
 <p>
 ПХП
 </p>
 </th>
 <th align="center">
-<img width="441" height="1">
+<img width="300" height="1">
 <p> 
 PHP
 </p>
