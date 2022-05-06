@@ -3,9 +3,9 @@
 [![Build Status](https://github.com/maxbarsukov/l7.X.l7/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/maxbarsukov/l7.X.l7/actions/workflows/ci.yml)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/maxbarsukov/l7.X.l7)
 
-![Packagist Version](https://img.shields.io/packagist/v/maxbarsukov/l7.X.l7)
-![Packagist Downloads](https://img.shields.io/packagist/dm/maxbarsukov/l7.X.l7)
-![Packagist License](https://img.shields.io/packagist/l/maxbarsukov/l7.X.l7)
+![Packagist Version](https://img.shields.io/packagist/v/maxbarsukov/l7xl7)
+![Packagist Downloads](https://img.shields.io/packagist/dm/maxbarsukov/l7xl7)
+![Packagist License](https://img.shields.io/packagist/l/maxbarsukov/l7xl7)
 
 **/7 ☦ /7 ~~( = ПХП )~~** – это широко используемый ~~в узких кругах~~ отечественный *язык сценариев*
 православного назначения с открытым исходным кодом, компилируемый в [**PHP**](https://www.php.net/).
