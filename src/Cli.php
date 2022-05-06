@@ -6,6 +6,7 @@ use Maxbarsukov\L7xl7\FileDispatcher\FileDispatcher;
 use Maxbarsukov\L7xl7\FileLoader\FileLoader;
 use Maxbarsukov\L7xl7\Utils\Error;
 use Maxbarsukov\L7xl7\Utils\PathTransformer;
+use Maxbarsukov\L7xl7\Utils\Utils;
 
 class Cli
 {
@@ -56,7 +57,7 @@ class Cli
         Options:
               --inpext=EXTS       The input files extensions
                                       (format as ".ext,..." or "ext,...")
-                                      [default: "ruphp,rup"]
+                                      [default: "ruphp,rup,пхп"]
               --outdir=OUTDIR     The directory for compiled files
                                       [default: "out"]
 
@@ -77,23 +78,18 @@ class Cli
         $this->_filename = $args[0];
         foreach (\array_slice($args, 1) as $arg) {
             if (str_starts_with($arg, '--inpext=')) {
-                $s = $this->_removePrefix($arg, '--inpext=');
+                $s = Utils::removePrefix($arg, '--inpext=');
                 $this->_fileExt = explode(',', $s);
             }
             if (str_starts_with($arg, '--outdir=')) {
-                $this->_outDir = $this->_removePrefix($arg, '--outdir=');
+                $this->_outDir = Utils::removePrefix($arg, '--outdir=');
             }
         }
         if (!isset($this->_fileExt)) {
-            $this->_fileExt = ['ruphp', 'rphp'];
+            $this->_fileExt = ['пхп', 'ruphp', 'rphp'];
         }
         if (!isset($this->_outDir)) {
             $this->_outDir = '/out';
         }
-    }
-
-    private function _removePrefix(string $text, string $prefix): string
-    {
-        return substr($text, \strlen($prefix)).'';
     }
 }
