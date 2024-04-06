@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ['8.0', '8.1', 'latest']
+        php-versions: ['8.0', '8.1']
       fail-fast: false
 
     steps:
